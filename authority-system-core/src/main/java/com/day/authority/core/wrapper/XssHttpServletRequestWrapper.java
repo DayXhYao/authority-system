@@ -85,12 +85,12 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
 
             @Override
             public boolean isFinished() {
-                return false;
+                return Boolean.FALSE;
             }
 
             @Override
             public boolean isReady() {
-                return false;
+                return Boolean.FALSE;
             }
 
             @Override

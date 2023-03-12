@@ -33,7 +33,7 @@ public class BeanCopierUtil {
         if (BEAN_COPIER_CACHE.containsKey(key)) {
             beanCopier = BEAN_COPIER_CACHE.get(key);
         } else {
-            beanCopier = BeanCopier.create(source.getClass(), target.getClass(), false);
+            beanCopier = BeanCopier.create(source.getClass(), target.getClass(), Boolean.FALSE);
             BEAN_COPIER_CACHE.put(key, beanCopier);
         }
         beanCopier.copy(source, target, null);
@@ -41,7 +41,7 @@ public class BeanCopierUtil {
     }
 
 
-    public static <T> List<T> copy(List source, Class<T> clazz) {
+    public static <T> List<T> copy(List<?> source, Class<T> clazz) {
         if (CollectionUtil.isEmpty(source)) {
             return CollectionUtil.newArrayList();
         }

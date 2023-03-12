@@ -24,12 +24,17 @@ public enum ResponseCode {
     /**
      * 无效资源
      */
-    NOT_FOUND_PAGE(404, "这儿没你要的东西!"),
+    NOT_FOUND_RESOURCE(404, "I don't have what you requested"),
 
     /**
      * 失败 默认
      */
-    FAIL(500, "服务器出小差了...");
+    FAIL(500, "Oh, shit, there's something wrong with my program"),
+
+    /**
+     * 参数为空
+     */
+    PARAM_IS_NULL(600, "I guess there's no bullet in your gun");
 
     private Integer code;
     private String message;

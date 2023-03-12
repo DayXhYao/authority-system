@@ -30,7 +30,7 @@ public class HttpServletUtil {
     }
 
     public static HttpServletRequest getRequest() {
-        return getRequest(false);
+        return getRequest(Boolean.FALSE);
     }
 
 

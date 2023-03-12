@@ -172,7 +172,7 @@ public class RedisUtil {
     public Boolean hasKey(String key) {
         Boolean res = redisTemplate.hasKey(key);
         if (null == res) {
-            return false;
+            return Boolean.FALSE;
         }
         return res;
     }
@@ -411,7 +411,7 @@ public class RedisUtil {
     public Boolean setIsMember(String key, Object value) {
         Boolean isMember = redisTemplate.opsForSet().isMember(key, value);
         if (null == isMember) {
-            return false;
+            return Boolean.FALSE;
         }
         return isMember;
     }

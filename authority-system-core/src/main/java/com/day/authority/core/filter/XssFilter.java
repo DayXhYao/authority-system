@@ -1,7 +1,7 @@
 package com.day.authority.core.filter;
 
 import com.day.authority.common.util.StringUtil;
-import com.day.authority.core.wrapper.XssHttpServletRequestWrapper1;
+import com.day.authority.core.wrapper.XssHttpServletRequestWrapper;
 import org.apache.http.entity.ContentType;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +26,7 @@ public class XssFilter implements Filter {
         if (StringUtil.isNotEmpty(contentType) && contentType.contains(ContentType.MULTIPART_FORM_DATA.getMimeType())) {
             chain.doFilter(request, response);
         } else {
-            XssHttpServletRequestWrapper1 xssRequest = new XssHttpServletRequestWrapper1((HttpServletRequest) request);
+            XssHttpServletRequestWrapper xssRequest = new XssHttpServletRequestWrapper((HttpServletRequest) request);
             chain.doFilter(xssRequest, response);
         }
     }

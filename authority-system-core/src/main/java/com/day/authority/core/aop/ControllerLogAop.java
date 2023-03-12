@@ -56,15 +56,13 @@ public class ControllerLogAop {
                 return pjp.proceed();
             }
 
-            String resJson = "";
-
             //记录执行时间
             log.info("---- [request] url: {}, args:{}", request.getRequestURL(), obtainMethodArgs(pjp));
             long start = System.currentTimeMillis();
             Object result = pjp.proceed();
             long runTime = System.currentTimeMillis() - start;
 
-            resJson = JsonUtil.toJson(result);
+            String resJson = JsonUtil.toJson(result);
             log.info("---- [response] url: {} userTime:{}, result:{}", request.getRequestURL(), runTime, resJson);
 
             //如果需要保存，则异步入库
@@ -103,7 +101,7 @@ public class ControllerLogAop {
 
     private static boolean isIgnoreArgs(Object object) {
         if (object == null) {
-            return false;
+            return Boolean.FALSE;
         }
 
         Class<?> clazz = object.getClass();
