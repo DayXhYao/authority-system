@@ -1,4 +1,4 @@
-package com.day.authority.server;
+package com.day.authority.api;
 
 /**
  * @author DayXhYao
