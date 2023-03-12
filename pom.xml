@@ -33,9 +33,8 @@
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
         <maven.test.skip>true</maven.test.skip>
 
-        <alibaba.cloud.version>2021.0.4.0</alibaba.cloud.version>
 
-        <spring.cloud.version>3.1.1</spring.cloud.version>
+        <mysql.version>5.1.37</mysql.version>
 
         <springfox.swagger.version>3.0.0</springfox.swagger.version>
         <knife4j.version>3.0.3</knife4j.version>
@@ -63,33 +62,11 @@
     <dependencyManagement>
         <dependencies>
 
-            <!--<editor-fold desc="springcloud依赖">-->
             <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>${alibaba.cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
             </dependency>
-
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-bootstrap</artifactId>
-                <version>${spring.cloud.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-openfeign</artifactId>
-                <version>${spring.cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-loadbalancer</artifactId>
-                <version>${spring.cloud.version}</version>
-            </dependency>
-            <!--</editor-fold>-->
-
 
             <dependency>
                 <groupId>org.redisson</groupId>
@@ -145,19 +122,6 @@
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-boot-starter</artifactId>
                 <version>${springfox.swagger.version}</version>
-            </dependency>
-
-            <!--中文繁体转简体-->
-            <dependency>
-                <groupId>com.github.houbb</groupId>
-                <artifactId>opencc4j</artifactId>
-                <version>${opencc4j.version}</version>
-            </dependency>
-            <!-- 中文转拼音 -->
-            <dependency>
-                <groupId>com.belerweb</groupId>
-                <artifactId>pinyin4j</artifactId>
-                <version>${pinyin4j.version}</version>
             </dependency>
 
 

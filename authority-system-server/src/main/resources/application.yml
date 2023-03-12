@@ -1,0 +1,27 @@
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    compatibility-verifier:
+      enabled: false
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss:SSS
+    time-zone: GMT+8
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*Mapper.xml
+  type-aliases-package: com.day.authority.server.model.*.domain.entity.**
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-value: N
+      logic-not-delete-value: Y
+      logic-delete-field: isValid
+  configuration:
+    map-underscore-to-camel-case: true
+
