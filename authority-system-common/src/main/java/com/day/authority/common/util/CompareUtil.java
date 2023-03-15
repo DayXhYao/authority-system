@@ -1,7 +1,7 @@
 package com.day.authority.common.util;
 
 /**
- * This tool class does not make non-null judgment on the comparison value. If there is a null value passed by a son of a bitch, wait to throw the null pointer exception!
+ * This tool class does not make non-null judgment on the comparison value. 
  *
  * @author DayXhYao
  * @date 2023/3/12 18:00
