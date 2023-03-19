@@ -37,8 +37,8 @@ public class AppServiceImpl implements AppService {
             return Result.fail(ResponseCode.NOT_FOUND_RESOURCE, Boolean.FALSE);
         }
 
-        if (app.updateAppInfo(AppServiceAssembler.convertDto(appInfo))) {
-            appRepository.saveApp(app);
+        app.updateAppInfo(AppServiceAssembler.convertDto(appInfo));
+        if (appRepository.saveApp(app)) {
             return Result.success(Boolean.TRUE);
         } else {
             return Result.fail(ResponseCode.FAIL, Boolean.FALSE);
