@@ -11,8 +11,7 @@ import com.day.authority.server.model.app.domain.objectvalue.AppObjectValue;
 public class AppServiceAssembler {
 
     public static AppObjectValue convertDto(AppInfoDetailDto detail) {
-        AppObjectValue appObjectValue = new AppObjectValue();
-        return BeanCopierUtil.copy(detail, appObjectValue);
+        return BeanCopierUtil.copy(detail, AppObjectValue.class);
     }
 
 

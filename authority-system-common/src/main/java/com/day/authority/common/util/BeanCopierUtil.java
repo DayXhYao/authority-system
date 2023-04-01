@@ -8,6 +8,7 @@ import org.springframework.cglib.beans.BeanCopier;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author DayXhYao
@@ -21,13 +22,52 @@ public class BeanCopierUtil {
      */
     private static final Map<String, BeanCopier> BEAN_COPIER_CACHE = new WeakConcurrentMap<>();
 
+
+
     /**
      * BeanCopier的copy
      *
-     * @param source 源文件的
-     * @param target 目标文件
+     * @param source 源对象
+     * @param clazz 目标对象
+     * @return 目标对象必须要有无参构造器，否则返回为空
      */
-    public static <T> T copy(Object source, T target) {
+    public static <T> T copy(Object source, Class<T> clazz) {
+        try {
+            return copy(source, clazz.getDeclaredConstructor().newInstance());
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
+        }
+    }
+
+
+    public static <T> List<T> copyList(List<?> source, Class<T> clazz) {
+        if (CollectionUtil.isEmpty(source)) {
+            return CollectionUtil.newArrayList();
+        }
+
+        List<T> response = new ArrayList<>();
+
+        for (Object sourceObj : source) {
+            T copy = copy(sourceObj, clazz);
+            if (Objects.isNull(copy)) {
+                return response;
+            }
+
+            response.add(copy);
+        }
+        return response;
+    }
+
+
+
+    /**
+     * BeanCopier的copy
+     *
+     * @param source 源对象
+     * @param target 目标对象
+     */
+    private static <T> T copy(Object source, T target) {
         String key = getKey(source.getClass(), target.getClass());
         BeanCopier beanCopier;
         if (BEAN_COPIER_CACHE.containsKey(key)) {
@@ -39,26 +79,6 @@ public class BeanCopierUtil {
         beanCopier.copy(source, target, null);
         return target;
     }
-
-
-    public static <T> List<T> copy(List<?> source, Class<T> clazz) {
-        if (CollectionUtil.isEmpty(source)) {
-            return CollectionUtil.newArrayList();
-        }
-
-        ArrayList<T> response = new ArrayList<>();
-
-        try {
-            for (Object sourceObj : source) {
-                T copy = copy(sourceObj, clazz.getDeclaredConstructor().newInstance());
-                response.add(copy);
-            }
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-        }
-        return response;
-    }
-
 
     /**
      * 生成key

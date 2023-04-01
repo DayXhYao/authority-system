@@ -15,8 +15,15 @@ public interface AppService {
      * @param appInfo 应用信息
      * @return 返回通用DTO
      */
-    Result<Boolean> updateApp(AppInfoDetailDto appInfo);
+    Result<Boolean> modifyApp(AppInfoDetailDto appInfo);
 
+
+    /**
+     * 保存App信息
+     * @param appInfo
+     * @return
+     */
+    Result<Boolean> saveApp(AppInfoDetailDto appInfo);
 
 
 }

@@ -23,7 +23,7 @@ public class CompanyDomain {
     }
 
 
-    public boolean updateAppInfo(CompanyObjectValue appObjectValue) {
+    public boolean updateCompanyInfo(CompanyObjectValue appObjectValue) {
         this.company.setDomainName(appObjectValue.getDomainName());
         this.company.setCompanyCode(appObjectValue.getCode());
         this.company.setCompanyName(appObjectValue.getName());
